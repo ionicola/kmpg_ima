@@ -1,0 +1,217 @@
+﻿<Page x:Class="QuanLySinhVienThucTap.Pages.QuanLyKhoaDaoTao"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLySinhVienThucTap.Pages"
+      mc:Ignorable="d" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="736" d:DesignWidth="1280"
+      Name="QLKDT"
+      Loaded="QuanLyKhoaDaoTao_Loaded"
+      Title="Quản lý khóa đào tạo">
+    <Page.DataContext>
+        QuanLyKhoaDaoTaoVM
+    </Page.DataContext>
+    <Page.Resources>
+        <local:TienDoToImageConverter x:Key="TienDoToImageConverter"/>
+    </Page.Resources>
+    <Grid Background="LightGray" Width="auto" Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Quản lý khóa đào tạo"  
+               FontSize="28" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Border Height="1" Background="Black" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MaxWidth="260"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <ListBox x:Name="listbox" ItemsSource="{Binding ListKhoaDaoTao}" SelectedItem="{Binding SelectedKhoaDaoTao}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="ListDuAnItem" Tag="{Binding MaKhoaDaoTao}" Text="{Binding TenKhoa}" FontWeight="Medium" FontSize="16" Foreground="Black">
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseUp">
+                                    <i:InvokeCommandAction Command="{Binding LoadKhoaDaoTaoCommand}" CommandParameter="{Binding ElementName=listbox}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                    </ScrollViewer>
+                </materialDesign:Card>
+                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Thêm" Margin="5" Width="110" Command="{Binding ThemKhoaHoc}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                                <Setter Property="Background" Value="{DynamicResource MaterialDesignPrimary}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignPaper}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <Button Content="Xóa" Margin="5" Width="110" Grid.Column="1" Command="{Binding XoaKhoaHoc}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                                <Setter Property="Background" Value="{DynamicResource MaterialDesignAccent}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignPaper}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Text="{Binding TenKhoaDaoTao}" FontWeight="ExtraBold" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <materialDesign:Card VerticalAlignment="Stretch">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ListView SelectionMode="Extended" ItemsSource="{Binding ListNhiemVuDaoTao}" SelectedItem="{Binding SelectedNhiemVuDaoTao, Mode=TwoWay}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn Width="auto" Header="STT">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="20,0,0,0" Text="{Binding STT}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Mã Nhiệm vụ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="40,0,0,0" Text="{Binding MaNhiemVuDaoTao}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Tên Thực tập sinh">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="20,0,0,0" Text="{Binding TenTTS}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Mã Thực tập sinh">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="50,0,0,0" Text="{Binding MaTTS}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="auto" Header="Deadline">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="10,0,0,0" Text="{Binding Deadline}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="auto" Header="Tiến độ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="15,0,0,0" Text="{Binding TienDo}">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding TienDo}" Value="in-progress">
+                                                                            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding TienDo}" Value="done">
+                                                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding TienDo}" Value="expired">
+                                                                            <Setter Property="Foreground" Value="DarkRed"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding TienDo}" Value="approved">
+                                                                            <Setter Property="Foreground" Value="DarkGreen"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <!-- <GridViewColumn Width="Auto" Header="Duyệt hoàn thành">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Button Content="Phê Duyệt" Click="PheDuyet">
+                                                                <Button.Style>
+                                                                    <Style TargetType="Button">
+                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding TienDo}" Value="done">
+                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Button.Style>
+                                                            </Button>
+                                                           <Image Width="20" Margin="30 0 0 0" Height="20" Source="{Binding TienDo, Converter={StaticResource TienDoToImageConverter}}">
+                                                                <Image.Style>
+                                                                    <Style TargetType="Image">
+                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding TienDo}" Value="approved">
+                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Image.Style>
+                                                            </Image>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>-->
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Content="Thêm nhiệm vụ" Command="{Binding ThemNhiemVuKhoaHoc}" Width="150" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                        <Button Content="Gia hạn nhiệm vụ" Command="{Binding SuaNhiemVuKhoaHoc}" Width="150" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                        <Button Content="Xóa nhiệm vụ" Command="{Binding XoaNhiemVuKhoaHoc}" Width="150" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

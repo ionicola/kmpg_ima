@@ -1,0 +1,123 @@
+﻿<Page x:Class="QuanLySinhVienThucTap.Pages.YeuCauChoPheDuyet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLySinhVienThucTap.Pages"
+      mc:Ignorable="d" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="736" d:DesignWidth="1280"
+      Name="YCCPD"
+      
+      Title="YeuCauChoPheDuyet">
+    <Page.DataContext>
+        YeuCauChoPheDuyetVM
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="LightGray" Width="auto" Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Yêu cầu chờ phê duyệt"  
+               FontSize="28" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Border Height="1" Background="Black" VerticalAlignment="Bottom"/>
+        <materialDesign:Card Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <ListView SelectionMode="Extended" ItemsSource="{Binding ListYeuCauChoPheDuyet}" SelectedItem="{Binding SelectedYeuCauChoDuyet, Mode=TwoWay}">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="STT">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="20,0,0,0" Text="{Binding STT}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Mã Yêu cầu">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="30,0,0,0" Text="{Binding MaYeuCau}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Tên Thực tập sinh">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="20,0,0,0" Text="{Binding TenTTS}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Mã Thực tập sinh">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="50,0,0,0" Text="{Binding MaTTS}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Ngày tạo">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <!-- Định dạng Ngày tạo nếu cần -->
+                                            <TextBlock Margin="0,0,0,0" Text="{Binding NgayTao}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Yêu cầu">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="10,0,0,0" Text="{Binding YeuCau}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="auto" Header="Ngày hiệu lực">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <!-- Định dạng Ngày hiệu lực nếu cần -->
+                                            <TextBlock Margin="0,0,0,0" Text="{Binding NgayHieuLuc}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="auto" Header="Status">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="15,0,0,0" Text="{Binding Status}" Foreground="DarkGoldenrod"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </materialDesign:Card>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Phê duyệt" Command="{Binding PheDuyetCommand}" Background="DarkGreen" Width="400" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                <Button Content="Từ chối" Command="{Binding TuChoiCommand}" Width="200" Background="DarkRed" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

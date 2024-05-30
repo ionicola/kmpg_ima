@@ -1,0 +1,119 @@
+﻿<Window x:Class="QuanLySinhVienThucTap.TTS_MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLySinhVienThucTap"
+        xmlns:uc="clr-namespace:QuanLySinhVienThucTap.UserControllerNEU"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource TTS_MainVM}"
+        Name="TTS_mainWindow"
+        Title="Trang chủ" Height="720" Width="1280" WindowState="Maximized">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=TTS_mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid>
+                    <ListBox x:Name="menuListBox" Grid.Column="0" Background="DimGray">
+                        <Grid Background="White" Width="230" Height="180">
+                            <!-- Hàng 1: Hiển thị ảnh người dùng -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source=".\Static\Images\c6e56503cfdd87da299f72dc416023d4.jpg" Width="100" Height="100" Margin="0 0 0 5" HorizontalAlignment="Center" Grid.Row="0"/>
+
+                            <TextBlock Text="{Binding UserName}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Grid.Row="1"/>
+                            <TextBlock Text="{Binding UserId}" HorizontalAlignment="Center" FontSize="14" Grid.Row="2"/>
+                            <TextBlock Text="{Binding UserRole}" FontWeight="Medium" FontSize="14" HorizontalAlignment="Center" Grid.Row="3"/>
+                            <TextBlock Text="{Binding UserDepart}" FontWeight="Medium" FontSize="14" HorizontalAlignment="Center" Grid.Row="4"/>
+                        </Grid>
+                        <Expander Width="230" Header="Nhiệm vụ dự án" FontWeight="Bold" Foreground="DarkBlue">
+                            <ListBox>
+                                <ListBoxItem Content="Danh sách nhiệm vụ" FontWeight="Normal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=TTS_mainWindow}" Command="{Binding DanhSachNhiemVu}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBoxItem>
+                            </ListBox>
+                        </Expander>
+                        <Expander Width="230" Header="Chương trình đào tạo" FontWeight="Bold" Foreground="DarkBlue">
+                            <ListBox>
+                                <ListBoxItem Content="Danh sách khóa học" FontWeight="Normal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=TTS_mainWindow}" Command="{Binding DanhSachKhoaHoc}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBoxItem>
+                                <ListBoxItem Content="Kết quả khóa học" FontWeight="Normal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=TTS_mainWindow}" Command="{Binding KetQuaKhoaHoc}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBoxItem>
+                            </ListBox>
+                        </Expander>
+                        <Expander Width="230" Header="Chấm công" FontWeight="Bold" Foreground="DarkBlue">
+                            <ListBox>
+                                <ListBoxItem Content="Điểm danh và chấm công" FontWeight="Normal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=TTS_mainWindow}" Command="{Binding DiemDanhVaChamCong}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBoxItem>
+                            </ListBox>
+                        </Expander>
+                        <Expander Width="230" Header="Quản lý yêu cầu" FontWeight="Bold" Foreground="DarkBlue">
+                            <ListBox>
+                                <ListBoxItem Content="Danh sách yêu cầu" FontWeight="Normal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=TTS_mainWindow}" Command="{Binding QuanLyYeuCau}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBoxItem>
+                            </ListBox>
+                        </Expander>
+                    </ListBox>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" x:Name="gridMainTTS" >
+                <Frame x:Name="FrameMainTTS" NavigationUIVisibility="Hidden">
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

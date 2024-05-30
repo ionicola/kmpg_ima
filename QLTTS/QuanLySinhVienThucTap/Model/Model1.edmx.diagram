@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6302418a45e246df8872cae025b221ad" Name="Diagram1" ZoomLevel="26">
+        <EntityTypeShape EntityType="TTSModel.tblChamCong" Width="1.5" PointX="8.5" PointY="20.125" />
+        <EntityTypeShape EntityType="TTSModel.tblChucVu" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="TTSModel.tblDuAn" Width="1.5" PointX="0.75" PointY="14.25" />
+        <EntityTypeShape EntityType="TTSModel.tblKhoaDaoTao" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="TTSModel.tblNguoiPheDuyet" Width="1.5" PointX="10.5" PointY="14" />
+        <EntityTypeShape EntityType="TTSModel.tblNhanSuDA" Width="1.5" PointX="8.25" PointY="11.25" />
+        <EntityTypeShape EntityType="TTSModel.tblNhanXetNhiemVuDA" Width="1.5" PointX="13.5" PointY="10.25" />
+        <EntityTypeShape EntityType="TTSModel.tblNhiemVuDA" Width="1.5" PointX="11.25" PointY="9.875" />
+        <EntityTypeShape EntityType="TTSModel.tblNhiemVuDaoTao" Width="1.5" PointX="8.25" PointY="8" />
+        <EntityTypeShape EntityType="TTSModel.tblNoiDungDaoTao" Width="1.5" PointX="8.25" PointY="4.25" />
+        <EntityTypeShape EntityType="TTSModel.tblPhongBan" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="TTSModel.tblQL" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="TTSModel.tblTrucThuoc" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="TTSModel.tblTT" Width="1.5" PointX="6" PointY="10.625" />
+        <EntityTypeShape EntityType="TTSModel.tblYeuCau" Width="1.5" PointX="8.375" PointY="17" />
+        <AssociationConnector Association="TTSModel.FK__tblChamCo__MaTTS__534D60F1" />
+        <AssociationConnector Association="TTSModel.FK__tblQL__MaChucVu__2D27B809" />
+        <AssociationConnector Association="TTSModel.FK__tblTTS__MaChucVu__29572725" />
+        <AssociationConnector Association="TTSModel.FK__tblNhanSuD__MaDA__440B1D61" />
+        <AssociationConnector Association="TTSModel.FK__tblNhiemVu__MaDA__3B75D760" />
+        <AssociationConnector Association="TTSModel.FK__tblTrucThu__MaDA__47DBAE45" />
+        <AssociationConnector Association="TTSModel.FK__tblNhiemV__MaKho__31EC6D26" />
+        <AssociationConnector Association="TTSModel.FK__tblNoiDun__MaKho__36B12243" />
+        <AssociationConnector Association="TTSModel.FK__tblNguoiP__MaYeu__5070F446" />
+        <AssociationConnector Association="TTSModel.FK__tblNguoiPh__MaQL__4F7CD00D" />
+        <AssociationConnector Association="TTSModel.FK__tblNhanSu__MaTTS__44FF419A" />
+        <AssociationConnector Association="TTSModel.FK__tblNhanXe__MaNhi__403A8C7D" />
+        <AssociationConnector Association="TTSModel.FK__tblNhiemV__MaTTS__3C69FB99" />
+        <AssociationConnector Association="TTSModel.FK__tblNhiemV__MaTTS__32E0915F" />
+        <AssociationConnector Association="TTSModel.FK__tblQL__MaPhongBa__2C3393D0" />
+        <AssociationConnector Association="TTSModel.FK__tblTrucTh__MaPho__48CFD27E" />
+        <AssociationConnector Association="TTSModel.FK__tblTTS__MaPhongB__286302EC" />
+        <AssociationConnector Association="TTSModel.FK__tblYeuCau__MaTTS__4BAC3F29" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

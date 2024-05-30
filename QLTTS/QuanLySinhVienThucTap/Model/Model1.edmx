@@ -1,0 +1,1166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblChamCong">
+          <Key>
+            <PropertyRef Name="MaChamCong" />
+          </Key>
+          <Property Name="MaChamCong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" />
+          <Property Name="NgayChamCong" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblChucVu">
+          <Key>
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaChucVu" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenChucVu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblDuAn">
+          <Key>
+            <PropertyRef Name="MaDA" />
+          </Key>
+          <Property Name="MaDA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenDA" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblKhoaDaoTao">
+          <Key>
+            <PropertyRef Name="MaKhoaDaoTao" />
+          </Key>
+          <Property Name="MaKhoaDaoTao" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenKhoa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblNguoiPheDuyet">
+          <Key>
+            <PropertyRef Name="MaPheDuyet" />
+          </Key>
+          <Property Name="MaPheDuyet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaQL" Type="varchar" MaxLength="30" />
+          <Property Name="MaYeuCau" Type="int" />
+        </EntityType>
+        <EntityType Name="tblNhanSuDA">
+          <Key>
+            <PropertyRef Name="MaNhanSuDA" />
+          </Key>
+          <Property Name="MaNhanSuDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDA" Type="varchar" MaxLength="30" />
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblNhanXetNhiemVuDA">
+          <Key>
+            <PropertyRef Name="MaNhanXetNhiemVuDA" />
+          </Key>
+          <Property Name="MaNhanXetNhiemVuDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNhiemVuDA" Type="int" />
+          <Property Name="NhanXet" Type="nvarchar(max)" />
+          <Property Name="Diem" Type="int" />
+        </EntityType>
+        <EntityType Name="tblNhiemVuDA">
+          <Key>
+            <PropertyRef Name="MaNhiemVuDA" />
+          </Key>
+          <Property Name="MaNhiemVuDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDA" Type="varchar" MaxLength="30" />
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" />
+          <Property Name="NgayBatDau" Type="datetime" />
+          <Property Name="Deadline" Type="datetime" />
+          <Property Name="NhiemVu" Type="nvarchar(max)" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblNhiemVuDaoTao">
+          <Key>
+            <PropertyRef Name="MaNhiemVuDaoTao" />
+          </Key>
+          <Property Name="MaNhiemVuDaoTao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKhoaDaoTao" Type="varchar" MaxLength="30" />
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" />
+          <Property Name="NgayBatDau" Type="datetime" />
+          <Property Name="Deadline" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblNoiDungDaoTao">
+          <Key>
+            <PropertyRef Name="MaNoiDungDaoTao" />
+          </Key>
+          <Property Name="MaNoiDungDaoTao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKhoaDaoTao" Type="varchar" MaxLength="30" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="Video" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblPhongBan">
+          <Key>
+            <PropertyRef Name="MaPhongBan" />
+          </Key>
+          <Property Name="MaPhongBan" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenPhongBan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblQL">
+          <Key>
+            <PropertyRef Name="MaQL" />
+          </Key>
+          <Property Name="MaQL" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenQL" Type="nvarchar(max)" />
+          <Property Name="MaPhongBan" Type="varchar" MaxLength="30" />
+          <Property Name="MaChucVu" Type="varchar" MaxLength="30" />
+          <Property Name="MatKhau" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTrucThuoc">
+          <Key>
+            <PropertyRef Name="MaTrucThuoc" />
+          </Key>
+          <Property Name="MaTrucThuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDA" Type="varchar" MaxLength="30" />
+          <Property Name="MaPhongBan" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblTTS">
+          <Key>
+            <PropertyRef Name="MaTTS" />
+          </Key>
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenTTS" Type="nvarchar(max)" />
+          <Property Name="MaPhongBan" Type="varchar" MaxLength="30" />
+          <Property Name="MaChucVu" Type="varchar" MaxLength="30" />
+          <Property Name="MatKhau" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblYeuCau">
+          <Key>
+            <PropertyRef Name="MaYeuCau" />
+          </Key>
+          <Property Name="MaYeuCau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayNop" Type="datetime" />
+          <Property Name="MaTTS" Type="varchar" MaxLength="30" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="NgayHieuLuc" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__tblChamCo__MaTTS__534D60F1">
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChamCong" Type="Self.tblChamCong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTTS">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblChamCong">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNguoiP__MaYeu__5070F446">
+          <End Role="tblYeuCau" Type="Self.tblYeuCau" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNguoiPheDuyet" Type="Self.tblNguoiPheDuyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblYeuCau">
+              <PropertyRef Name="MaYeuCau" />
+            </Principal>
+            <Dependent Role="tblNguoiPheDuyet">
+              <PropertyRef Name="MaYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNguoiPh__MaQL__4F7CD00D">
+          <End Role="tblQL" Type="Self.tblQL" Multiplicity="0..1" />
+          <End Role="tblNguoiPheDuyet" Type="Self.tblNguoiPheDuyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQL">
+              <PropertyRef Name="MaQL" />
+            </Principal>
+            <Dependent Role="tblNguoiPheDuyet">
+              <PropertyRef Name="MaQL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanSu__MaTTS__44FF419A">
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhanSuDA" Type="Self.tblNhanSuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTTS">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhanSuDA">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanSuD__MaDA__440B1D61">
+          <End Role="tblDuAn" Type="Self.tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhanSuDA" Type="Self.tblNhanSuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblNhanSuDA">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanXe__MaNhi__403A8C7D">
+          <End Role="tblNhiemVuDA" Type="Self.tblNhiemVuDA" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhanXetNhiemVuDA" Type="Self.tblNhanXetNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNhiemVuDA">
+              <PropertyRef Name="MaNhiemVuDA" />
+            </Principal>
+            <Dependent Role="tblNhanXetNhiemVuDA">
+              <PropertyRef Name="MaNhiemVuDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaKho__31EC6D26">
+          <End Role="tblKhoaDaoTao" Type="Self.tblKhoaDaoTao" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhiemVuDaoTao" Type="Self.tblNhiemVuDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaTTS__32E0915F">
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhiemVuDaoTao" Type="Self.tblNhiemVuDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTTS">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDaoTao">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaTTS__3C69FB99">
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhiemVuDA" Type="Self.tblNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTTS">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDA">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemVu__MaDA__3B75D760">
+          <End Role="tblDuAn" Type="Self.tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNhiemVuDA" Type="Self.tblNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDA">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNoiDun__MaKho__36B12243">
+          <End Role="tblKhoaDaoTao" Type="Self.tblKhoaDaoTao" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblNoiDungDaoTao" Type="Self.tblNoiDungDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="tblNoiDungDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQL__MaChucVu__2D27B809">
+          <End Role="tblChucVu" Type="Self.tblChucVu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblQL" Type="Self.tblQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="tblQL">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQL__MaPhongBa__2C3393D0">
+          <End Role="tblPhongBan" Type="Self.tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblQL" Type="Self.tblQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblQL">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTrucTh__MaPho__48CFD27E">
+          <End Role="tblPhongBan" Type="Self.tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTrucThuoc" Type="Self.tblTrucThuoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblTrucThuoc">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTrucThu__MaDA__47DBAE45">
+          <End Role="tblDuAn" Type="Self.tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTrucThuoc" Type="Self.tblTrucThuoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblTrucThuoc">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTTS__MaChucVu__29572725">
+          <End Role="tblChucVu" Type="Self.tblChucVu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="tblTTS">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTTS__MaPhongB__286302EC">
+          <End Role="tblPhongBan" Type="Self.tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblTTS">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblYeuCau__MaTTS__4BAC3F29">
+          <End Role="tblTTS" Type="Self.tblTTS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblYeuCau" Type="Self.tblYeuCau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTTS">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblYeuCau">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTSModelStoreContainer">
+          <EntitySet Name="tblChamCong" EntityType="Self.tblChamCong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChucVu" EntityType="Self.tblChucVu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDuAn" EntityType="Self.tblDuAn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKhoaDaoTao" EntityType="Self.tblKhoaDaoTao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNguoiPheDuyet" EntityType="Self.tblNguoiPheDuyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNhanSuDA" EntityType="Self.tblNhanSuDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNhanXetNhiemVuDA" EntityType="Self.tblNhanXetNhiemVuDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNhiemVuDA" EntityType="Self.tblNhiemVuDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNhiemVuDaoTao" EntityType="Self.tblNhiemVuDaoTao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNoiDungDaoTao" EntityType="Self.tblNoiDungDaoTao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPhongBan" EntityType="Self.tblPhongBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQL" EntityType="Self.tblQL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTrucThuoc" EntityType="Self.tblTrucThuoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTTS" EntityType="Self.tblTTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYeuCau" EntityType="Self.tblYeuCau" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblChamCo__MaTTS__534D60F1" Association="Self.FK__tblChamCo__MaTTS__534D60F1">
+            <End Role="tblTTS" EntitySet="tblTTS" />
+            <End Role="tblChamCong" EntitySet="tblChamCong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNguoiP__MaYeu__5070F446" Association="Self.FK__tblNguoiP__MaYeu__5070F446">
+            <End Role="tblYeuCau" EntitySet="tblYeuCau" />
+            <End Role="tblNguoiPheDuyet" EntitySet="tblNguoiPheDuyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNguoiPh__MaQL__4F7CD00D" Association="Self.FK__tblNguoiPh__MaQL__4F7CD00D">
+            <End Role="tblQL" EntitySet="tblQL" />
+            <End Role="tblNguoiPheDuyet" EntitySet="tblNguoiPheDuyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanSu__MaTTS__44FF419A" Association="Self.FK__tblNhanSu__MaTTS__44FF419A">
+            <End Role="tblTTS" EntitySet="tblTTS" />
+            <End Role="tblNhanSuDA" EntitySet="tblNhanSuDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanSuD__MaDA__440B1D61" Association="Self.FK__tblNhanSuD__MaDA__440B1D61">
+            <End Role="tblDuAn" EntitySet="tblDuAn" />
+            <End Role="tblNhanSuDA" EntitySet="tblNhanSuDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanXe__MaNhi__403A8C7D" Association="Self.FK__tblNhanXe__MaNhi__403A8C7D">
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDA" />
+            <End Role="tblNhanXetNhiemVuDA" EntitySet="tblNhanXetNhiemVuDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaKho__31EC6D26" Association="Self.FK__tblNhiemV__MaKho__31EC6D26">
+            <End Role="tblKhoaDaoTao" EntitySet="tblKhoaDaoTao" />
+            <End Role="tblNhiemVuDaoTao" EntitySet="tblNhiemVuDaoTao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaTTS__32E0915F" Association="Self.FK__tblNhiemV__MaTTS__32E0915F">
+            <End Role="tblTTS" EntitySet="tblTTS" />
+            <End Role="tblNhiemVuDaoTao" EntitySet="tblNhiemVuDaoTao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaTTS__3C69FB99" Association="Self.FK__tblNhiemV__MaTTS__3C69FB99">
+            <End Role="tblTTS" EntitySet="tblTTS" />
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemVu__MaDA__3B75D760" Association="Self.FK__tblNhiemVu__MaDA__3B75D760">
+            <End Role="tblDuAn" EntitySet="tblDuAn" />
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNoiDun__MaKho__36B12243" Association="Self.FK__tblNoiDun__MaKho__36B12243">
+            <End Role="tblKhoaDaoTao" EntitySet="tblKhoaDaoTao" />
+            <End Role="tblNoiDungDaoTao" EntitySet="tblNoiDungDaoTao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQL__MaChucVu__2D27B809" Association="Self.FK__tblQL__MaChucVu__2D27B809">
+            <End Role="tblChucVu" EntitySet="tblChucVu" />
+            <End Role="tblQL" EntitySet="tblQL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQL__MaPhongBa__2C3393D0" Association="Self.FK__tblQL__MaPhongBa__2C3393D0">
+            <End Role="tblPhongBan" EntitySet="tblPhongBan" />
+            <End Role="tblQL" EntitySet="tblQL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTrucTh__MaPho__48CFD27E" Association="Self.FK__tblTrucTh__MaPho__48CFD27E">
+            <End Role="tblPhongBan" EntitySet="tblPhongBan" />
+            <End Role="tblTrucThuoc" EntitySet="tblTrucThuoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTrucThu__MaDA__47DBAE45" Association="Self.FK__tblTrucThu__MaDA__47DBAE45">
+            <End Role="tblDuAn" EntitySet="tblDuAn" />
+            <End Role="tblTrucThuoc" EntitySet="tblTrucThuoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTTS__MaChucVu__29572725" Association="Self.FK__tblTTS__MaChucVu__29572725">
+            <End Role="tblChucVu" EntitySet="tblChucVu" />
+            <End Role="tblTTS" EntitySet="tblTTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTTS__MaPhongB__286302EC" Association="Self.FK__tblTTS__MaPhongB__286302EC">
+            <End Role="tblPhongBan" EntitySet="tblPhongBan" />
+            <End Role="tblTTS" EntitySet="tblTTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblYeuCau__MaTTS__4BAC3F29" Association="Self.FK__tblYeuCau__MaTTS__4BAC3F29">
+            <End Role="tblTTS" EntitySet="tblTTS" />
+            <End Role="tblYeuCau" EntitySet="tblYeuCau" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TTSEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblChamCongs" EntityType="TTSModel.tblChamCong" />
+          <EntitySet Name="tblChucVus" EntityType="TTSModel.tblChucVu" />
+          <EntitySet Name="tblDuAns" EntityType="TTSModel.tblDuAn" />
+          <EntitySet Name="tblKhoaDaoTaos" EntityType="TTSModel.tblKhoaDaoTao" />
+          <EntitySet Name="tblNguoiPheDuyets" EntityType="TTSModel.tblNguoiPheDuyet" />
+          <EntitySet Name="tblNhanSuDAs" EntityType="TTSModel.tblNhanSuDA" />
+          <EntitySet Name="tblNhanXetNhiemVuDAs" EntityType="TTSModel.tblNhanXetNhiemVuDA" />
+          <EntitySet Name="tblNhiemVuDAs" EntityType="TTSModel.tblNhiemVuDA" />
+          <EntitySet Name="tblNhiemVuDaoTaos" EntityType="TTSModel.tblNhiemVuDaoTao" />
+          <EntitySet Name="tblNoiDungDaoTaos" EntityType="TTSModel.tblNoiDungDaoTao" />
+          <EntitySet Name="tblPhongBans" EntityType="TTSModel.tblPhongBan" />
+          <EntitySet Name="tblQLs" EntityType="TTSModel.tblQL" />
+          <EntitySet Name="tblTrucThuocs" EntityType="TTSModel.tblTrucThuoc" />
+          <EntitySet Name="tblTTS" EntityType="TTSModel.tblTT" />
+          <EntitySet Name="tblYeuCaus" EntityType="TTSModel.tblYeuCau" />
+          <AssociationSet Name="FK__tblChamCo__MaTTS__534D60F1" Association="TTSModel.FK__tblChamCo__MaTTS__534D60F1">
+            <End Role="tblTT" EntitySet="tblTTS" />
+            <End Role="tblChamCong" EntitySet="tblChamCongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQL__MaChucVu__2D27B809" Association="TTSModel.FK__tblQL__MaChucVu__2D27B809">
+            <End Role="tblChucVu" EntitySet="tblChucVus" />
+            <End Role="tblQL" EntitySet="tblQLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTTS__MaChucVu__29572725" Association="TTSModel.FK__tblTTS__MaChucVu__29572725">
+            <End Role="tblChucVu" EntitySet="tblChucVus" />
+            <End Role="tblTT" EntitySet="tblTTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanSuD__MaDA__440B1D61" Association="TTSModel.FK__tblNhanSuD__MaDA__440B1D61">
+            <End Role="tblDuAn" EntitySet="tblDuAns" />
+            <End Role="tblNhanSuDA" EntitySet="tblNhanSuDAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemVu__MaDA__3B75D760" Association="TTSModel.FK__tblNhiemVu__MaDA__3B75D760">
+            <End Role="tblDuAn" EntitySet="tblDuAns" />
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTrucThu__MaDA__47DBAE45" Association="TTSModel.FK__tblTrucThu__MaDA__47DBAE45">
+            <End Role="tblDuAn" EntitySet="tblDuAns" />
+            <End Role="tblTrucThuoc" EntitySet="tblTrucThuocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaKho__31EC6D26" Association="TTSModel.FK__tblNhiemV__MaKho__31EC6D26">
+            <End Role="tblKhoaDaoTao" EntitySet="tblKhoaDaoTaos" />
+            <End Role="tblNhiemVuDaoTao" EntitySet="tblNhiemVuDaoTaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNoiDun__MaKho__36B12243" Association="TTSModel.FK__tblNoiDun__MaKho__36B12243">
+            <End Role="tblKhoaDaoTao" EntitySet="tblKhoaDaoTaos" />
+            <End Role="tblNoiDungDaoTao" EntitySet="tblNoiDungDaoTaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNguoiP__MaYeu__5070F446" Association="TTSModel.FK__tblNguoiP__MaYeu__5070F446">
+            <End Role="tblYeuCau" EntitySet="tblYeuCaus" />
+            <End Role="tblNguoiPheDuyet" EntitySet="tblNguoiPheDuyets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNguoiPh__MaQL__4F7CD00D" Association="TTSModel.FK__tblNguoiPh__MaQL__4F7CD00D">
+            <End Role="tblQL" EntitySet="tblQLs" />
+            <End Role="tblNguoiPheDuyet" EntitySet="tblNguoiPheDuyets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanSu__MaTTS__44FF419A" Association="TTSModel.FK__tblNhanSu__MaTTS__44FF419A">
+            <End Role="tblTT" EntitySet="tblTTS" />
+            <End Role="tblNhanSuDA" EntitySet="tblNhanSuDAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhanXe__MaNhi__403A8C7D" Association="TTSModel.FK__tblNhanXe__MaNhi__403A8C7D">
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDAs" />
+            <End Role="tblNhanXetNhiemVuDA" EntitySet="tblNhanXetNhiemVuDAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaTTS__3C69FB99" Association="TTSModel.FK__tblNhiemV__MaTTS__3C69FB99">
+            <End Role="tblTT" EntitySet="tblTTS" />
+            <End Role="tblNhiemVuDA" EntitySet="tblNhiemVuDAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblNhiemV__MaTTS__32E0915F" Association="TTSModel.FK__tblNhiemV__MaTTS__32E0915F">
+            <End Role="tblTT" EntitySet="tblTTS" />
+            <End Role="tblNhiemVuDaoTao" EntitySet="tblNhiemVuDaoTaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQL__MaPhongBa__2C3393D0" Association="TTSModel.FK__tblQL__MaPhongBa__2C3393D0">
+            <End Role="tblPhongBan" EntitySet="tblPhongBans" />
+            <End Role="tblQL" EntitySet="tblQLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTrucTh__MaPho__48CFD27E" Association="TTSModel.FK__tblTrucTh__MaPho__48CFD27E">
+            <End Role="tblPhongBan" EntitySet="tblPhongBans" />
+            <End Role="tblTrucThuoc" EntitySet="tblTrucThuocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTTS__MaPhongB__286302EC" Association="TTSModel.FK__tblTTS__MaPhongB__286302EC">
+            <End Role="tblPhongBan" EntitySet="tblPhongBans" />
+            <End Role="tblTT" EntitySet="tblTTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblYeuCau__MaTTS__4BAC3F29" Association="TTSModel.FK__tblYeuCau__MaTTS__4BAC3F29">
+            <End Role="tblTT" EntitySet="tblTTS" />
+            <End Role="tblYeuCau" EntitySet="tblYeuCaus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblChamCong">
+          <Key>
+            <PropertyRef Name="MaChamCong" />
+          </Key>
+          <Property Name="MaChamCong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTTS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NgayChamCong" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblTT" Relationship="TTSModel.FK__tblChamCo__MaTTS__534D60F1" FromRole="tblChamCong" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblChucVu">
+          <Key>
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaChucVu" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblQLs" Relationship="TTSModel.FK__tblQL__MaChucVu__2D27B809" FromRole="tblChucVu" ToRole="tblQL" />
+          <NavigationProperty Name="tblTTS" Relationship="TTSModel.FK__tblTTS__MaChucVu__29572725" FromRole="tblChucVu" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblDuAn">
+          <Key>
+            <PropertyRef Name="MaDA" />
+          </Key>
+          <Property Name="MaDA" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenDA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblNhanSuDAs" Relationship="TTSModel.FK__tblNhanSuD__MaDA__440B1D61" FromRole="tblDuAn" ToRole="tblNhanSuDA" />
+          <NavigationProperty Name="tblNhiemVuDAs" Relationship="TTSModel.FK__tblNhiemVu__MaDA__3B75D760" FromRole="tblDuAn" ToRole="tblNhiemVuDA" />
+          <NavigationProperty Name="tblTrucThuocs" Relationship="TTSModel.FK__tblTrucThu__MaDA__47DBAE45" FromRole="tblDuAn" ToRole="tblTrucThuoc" />
+        </EntityType>
+        <EntityType Name="tblKhoaDaoTao">
+          <Key>
+            <PropertyRef Name="MaKhoaDaoTao" />
+          </Key>
+          <Property Name="MaKhoaDaoTao" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenKhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblNhiemVuDaoTaos" Relationship="TTSModel.FK__tblNhiemV__MaKho__31EC6D26" FromRole="tblKhoaDaoTao" ToRole="tblNhiemVuDaoTao" />
+          <NavigationProperty Name="tblNoiDungDaoTaos" Relationship="TTSModel.FK__tblNoiDun__MaKho__36B12243" FromRole="tblKhoaDaoTao" ToRole="tblNoiDungDaoTao" />
+        </EntityType>
+        <EntityType Name="tblNguoiPheDuyet">
+          <Key>
+            <PropertyRef Name="MaPheDuyet" />
+          </Key>
+          <Property Name="MaPheDuyet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaQL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaYeuCau" Type="Int32" />
+          <NavigationProperty Name="tblYeuCau" Relationship="TTSModel.FK__tblNguoiP__MaYeu__5070F446" FromRole="tblNguoiPheDuyet" ToRole="tblYeuCau" />
+          <NavigationProperty Name="tblQL" Relationship="TTSModel.FK__tblNguoiPh__MaQL__4F7CD00D" FromRole="tblNguoiPheDuyet" ToRole="tblQL" />
+        </EntityType>
+        <EntityType Name="tblNhanSuDA">
+          <Key>
+            <PropertyRef Name="MaNhanSuDA" />
+          </Key>
+          <Property Name="MaNhanSuDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaTTS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDuAn" Relationship="TTSModel.FK__tblNhanSuD__MaDA__440B1D61" FromRole="tblNhanSuDA" ToRole="tblDuAn" />
+          <NavigationProperty Name="tblTT" Relationship="TTSModel.FK__tblNhanSu__MaTTS__44FF419A" FromRole="tblNhanSuDA" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblNhanXetNhiemVuDA">
+          <Key>
+            <PropertyRef Name="MaNhanXetNhiemVuDA" />
+          </Key>
+          <Property Name="MaNhanXetNhiemVuDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNhiemVuDA" Type="Int32" />
+          <Property Name="NhanXet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Diem" Type="Int32" />
+          <NavigationProperty Name="tblNhiemVuDA" Relationship="TTSModel.FK__tblNhanXe__MaNhi__403A8C7D" FromRole="tblNhanXetNhiemVuDA" ToRole="tblNhiemVuDA" />
+        </EntityType>
+        <EntityType Name="tblNhiemVuDA">
+          <Key>
+            <PropertyRef Name="MaNhiemVuDA" />
+          </Key>
+          <Property Name="MaNhiemVuDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaTTS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
+          <Property Name="NhiemVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDuAn" Relationship="TTSModel.FK__tblNhiemVu__MaDA__3B75D760" FromRole="tblNhiemVuDA" ToRole="tblDuAn" />
+          <NavigationProperty Name="tblNhanXetNhiemVuDAs" Relationship="TTSModel.FK__tblNhanXe__MaNhi__403A8C7D" FromRole="tblNhiemVuDA" ToRole="tblNhanXetNhiemVuDA" />
+          <NavigationProperty Name="tblTT" Relationship="TTSModel.FK__tblNhiemV__MaTTS__3C69FB99" FromRole="tblNhiemVuDA" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblNhiemVuDaoTao">
+          <Key>
+            <PropertyRef Name="MaNhiemVuDaoTao" />
+          </Key>
+          <Property Name="MaNhiemVuDaoTao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKhoaDaoTao" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaTTS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblKhoaDaoTao" Relationship="TTSModel.FK__tblNhiemV__MaKho__31EC6D26" FromRole="tblNhiemVuDaoTao" ToRole="tblKhoaDaoTao" />
+          <NavigationProperty Name="tblTT" Relationship="TTSModel.FK__tblNhiemV__MaTTS__32E0915F" FromRole="tblNhiemVuDaoTao" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblNoiDungDaoTao">
+          <Key>
+            <PropertyRef Name="MaNoiDungDaoTao" />
+          </Key>
+          <Property Name="MaNoiDungDaoTao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKhoaDaoTao" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblKhoaDaoTao" Relationship="TTSModel.FK__tblNoiDun__MaKho__36B12243" FromRole="tblNoiDungDaoTao" ToRole="tblKhoaDaoTao" />
+        </EntityType>
+        <EntityType Name="tblPhongBan">
+          <Key>
+            <PropertyRef Name="MaPhongBan" />
+          </Key>
+          <Property Name="MaPhongBan" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenPhongBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblQLs" Relationship="TTSModel.FK__tblQL__MaPhongBa__2C3393D0" FromRole="tblPhongBan" ToRole="tblQL" />
+          <NavigationProperty Name="tblTrucThuocs" Relationship="TTSModel.FK__tblTrucTh__MaPho__48CFD27E" FromRole="tblPhongBan" ToRole="tblTrucThuoc" />
+          <NavigationProperty Name="tblTTS" Relationship="TTSModel.FK__tblTTS__MaPhongB__286302EC" FromRole="tblPhongBan" ToRole="tblTT" />
+        </EntityType>
+        <EntityType Name="tblQL">
+          <Key>
+            <PropertyRef Name="MaQL" />
+          </Key>
+          <Property Name="MaQL" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenQL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhongBan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaChucVu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblChucVu" Relationship="TTSModel.FK__tblQL__MaChucVu__2D27B809" FromRole="tblQL" ToRole="tblChucVu" />
+          <NavigationProperty Name="tblNguoiPheDuyets" Relationship="TTSModel.FK__tblNguoiPh__MaQL__4F7CD00D" FromRole="tblQL" ToRole="tblNguoiPheDuyet" />
+          <NavigationProperty Name="tblPhongBan" Relationship="TTSModel.FK__tblQL__MaPhongBa__2C3393D0" FromRole="tblQL" ToRole="tblPhongBan" />
+        </EntityType>
+        <EntityType Name="tblTrucThuoc">
+          <Key>
+            <PropertyRef Name="MaTrucThuoc" />
+          </Key>
+          <Property Name="MaTrucThuoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhongBan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDuAn" Relationship="TTSModel.FK__tblTrucThu__MaDA__47DBAE45" FromRole="tblTrucThuoc" ToRole="tblDuAn" />
+          <NavigationProperty Name="tblPhongBan" Relationship="TTSModel.FK__tblTrucTh__MaPho__48CFD27E" FromRole="tblTrucThuoc" ToRole="tblPhongBan" />
+        </EntityType>
+        <EntityType Name="tblTT">
+          <Key>
+            <PropertyRef Name="MaTTS" />
+          </Key>
+          <Property Name="MaTTS" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenTTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhongBan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaChucVu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblChamCongs" Relationship="TTSModel.FK__tblChamCo__MaTTS__534D60F1" FromRole="tblTT" ToRole="tblChamCong" />
+          <NavigationProperty Name="tblChucVu" Relationship="TTSModel.FK__tblTTS__MaChucVu__29572725" FromRole="tblTT" ToRole="tblChucVu" />
+          <NavigationProperty Name="tblNhanSuDAs" Relationship="TTSModel.FK__tblNhanSu__MaTTS__44FF419A" FromRole="tblTT" ToRole="tblNhanSuDA" />
+          <NavigationProperty Name="tblNhiemVuDAs" Relationship="TTSModel.FK__tblNhiemV__MaTTS__3C69FB99" FromRole="tblTT" ToRole="tblNhiemVuDA" />
+          <NavigationProperty Name="tblNhiemVuDaoTaos" Relationship="TTSModel.FK__tblNhiemV__MaTTS__32E0915F" FromRole="tblTT" ToRole="tblNhiemVuDaoTao" />
+          <NavigationProperty Name="tblPhongBan" Relationship="TTSModel.FK__tblTTS__MaPhongB__286302EC" FromRole="tblTT" ToRole="tblPhongBan" />
+          <NavigationProperty Name="tblYeuCaus" Relationship="TTSModel.FK__tblYeuCau__MaTTS__4BAC3F29" FromRole="tblTT" ToRole="tblYeuCau" />
+        </EntityType>
+        <EntityType Name="tblYeuCau">
+          <Key>
+            <PropertyRef Name="MaYeuCau" />
+          </Key>
+          <Property Name="MaYeuCau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayNop" Type="DateTime" Precision="3" />
+          <Property Name="MaTTS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayHieuLuc" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblNguoiPheDuyets" Relationship="TTSModel.FK__tblNguoiP__MaYeu__5070F446" FromRole="tblYeuCau" ToRole="tblNguoiPheDuyet" />
+          <NavigationProperty Name="tblTT" Relationship="TTSModel.FK__tblYeuCau__MaTTS__4BAC3F29" FromRole="tblYeuCau" ToRole="tblTT" />
+        </EntityType>
+        <Association Name="FK__tblChamCo__MaTTS__534D60F1">
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblChamCong" Role="tblChamCong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTT">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblChamCong">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQL__MaChucVu__2D27B809">
+          <End Type="TTSModel.tblChucVu" Role="tblChucVu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblQL" Role="tblQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="tblQL">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTTS__MaChucVu__29572725">
+          <End Type="TTSModel.tblChucVu" Role="tblChucVu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="tblTT">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanSuD__MaDA__440B1D61">
+          <End Type="TTSModel.tblDuAn" Role="tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhanSuDA" Role="tblNhanSuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblNhanSuDA">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemVu__MaDA__3B75D760">
+          <End Type="TTSModel.tblDuAn" Role="tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhiemVuDA" Role="tblNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDA">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTrucThu__MaDA__47DBAE45">
+          <End Type="TTSModel.tblDuAn" Role="tblDuAn" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblTrucThuoc" Role="tblTrucThuoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDuAn">
+              <PropertyRef Name="MaDA" />
+            </Principal>
+            <Dependent Role="tblTrucThuoc">
+              <PropertyRef Name="MaDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaKho__31EC6D26">
+          <End Type="TTSModel.tblKhoaDaoTao" Role="tblKhoaDaoTao" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhiemVuDaoTao" Role="tblNhiemVuDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNoiDun__MaKho__36B12243">
+          <End Type="TTSModel.tblKhoaDaoTao" Role="tblKhoaDaoTao" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNoiDungDaoTao" Role="tblNoiDungDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="tblNoiDungDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNguoiP__MaYeu__5070F446">
+          <End Type="TTSModel.tblYeuCau" Role="tblYeuCau" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNguoiPheDuyet" Role="tblNguoiPheDuyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblYeuCau">
+              <PropertyRef Name="MaYeuCau" />
+            </Principal>
+            <Dependent Role="tblNguoiPheDuyet">
+              <PropertyRef Name="MaYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNguoiPh__MaQL__4F7CD00D">
+          <End Type="TTSModel.tblQL" Role="tblQL" Multiplicity="0..1" />
+          <End Type="TTSModel.tblNguoiPheDuyet" Role="tblNguoiPheDuyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQL">
+              <PropertyRef Name="MaQL" />
+            </Principal>
+            <Dependent Role="tblNguoiPheDuyet">
+              <PropertyRef Name="MaQL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanSu__MaTTS__44FF419A">
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhanSuDA" Role="tblNhanSuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTT">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhanSuDA">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhanXe__MaNhi__403A8C7D">
+          <End Type="TTSModel.tblNhiemVuDA" Role="tblNhiemVuDA" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhanXetNhiemVuDA" Role="tblNhanXetNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNhiemVuDA">
+              <PropertyRef Name="MaNhiemVuDA" />
+            </Principal>
+            <Dependent Role="tblNhanXetNhiemVuDA">
+              <PropertyRef Name="MaNhiemVuDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaTTS__3C69FB99">
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhiemVuDA" Role="tblNhiemVuDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTT">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDA">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblNhiemV__MaTTS__32E0915F">
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblNhiemVuDaoTao" Role="tblNhiemVuDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTT">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblNhiemVuDaoTao">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQL__MaPhongBa__2C3393D0">
+          <End Type="TTSModel.tblPhongBan" Role="tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblQL" Role="tblQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblQL">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTrucTh__MaPho__48CFD27E">
+          <End Type="TTSModel.tblPhongBan" Role="tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblTrucThuoc" Role="tblTrucThuoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblTrucThuoc">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTTS__MaPhongB__286302EC">
+          <End Type="TTSModel.tblPhongBan" Role="tblPhongBan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="tblTT">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblYeuCau__MaTTS__4BAC3F29">
+          <End Type="TTSModel.tblTT" Role="tblTT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TTSModel.tblYeuCau" Role="tblYeuCau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTT">
+              <PropertyRef Name="MaTTS" />
+            </Principal>
+            <Dependent Role="tblYeuCau">
+              <PropertyRef Name="MaTTS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TTSModelStoreContainer" CdmEntityContainer="TTSEntities1">
+          <EntitySetMapping Name="tblChamCongs">
+            <EntityTypeMapping TypeName="TTSModel.tblChamCong">
+              <MappingFragment StoreEntitySet="tblChamCong">
+                <ScalarProperty Name="NgayChamCong" ColumnName="NgayChamCong" />
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+                <ScalarProperty Name="MaChamCong" ColumnName="MaChamCong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChucVus">
+            <EntityTypeMapping TypeName="TTSModel.tblChucVu">
+              <MappingFragment StoreEntitySet="tblChucVu">
+                <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDuAns">
+            <EntityTypeMapping TypeName="TTSModel.tblDuAn">
+              <MappingFragment StoreEntitySet="tblDuAn">
+                <ScalarProperty Name="TenDA" ColumnName="TenDA" />
+                <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKhoaDaoTaos">
+            <EntityTypeMapping TypeName="TTSModel.tblKhoaDaoTao">
+              <MappingFragment StoreEntitySet="tblKhoaDaoTao">
+                <ScalarProperty Name="TenKhoa" ColumnName="TenKhoa" />
+                <ScalarProperty Name="MaKhoaDaoTao" ColumnName="MaKhoaDaoTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNguoiPheDuyets">
+            <EntityTypeMapping TypeName="TTSModel.tblNguoiPheDuyet">
+              <MappingFragment StoreEntitySet="tblNguoiPheDuyet">
+                <ScalarProperty Name="MaYeuCau" ColumnName="MaYeuCau" />
+                <ScalarProperty Name="MaQL" ColumnName="MaQL" />
+                <ScalarProperty Name="MaPheDuyet" ColumnName="MaPheDuyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNhanSuDAs">
+            <EntityTypeMapping TypeName="TTSModel.tblNhanSuDA">
+              <MappingFragment StoreEntitySet="tblNhanSuDA">
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+                <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+                <ScalarProperty Name="MaNhanSuDA" ColumnName="MaNhanSuDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNhanXetNhiemVuDAs">
+            <EntityTypeMapping TypeName="TTSModel.tblNhanXetNhiemVuDA">
+              <MappingFragment StoreEntitySet="tblNhanXetNhiemVuDA">
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+                <ScalarProperty Name="NhanXet" ColumnName="NhanXet" />
+                <ScalarProperty Name="MaNhiemVuDA" ColumnName="MaNhiemVuDA" />
+                <ScalarProperty Name="MaNhanXetNhiemVuDA" ColumnName="MaNhanXetNhiemVuDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNhiemVuDAs">
+            <EntityTypeMapping TypeName="TTSModel.tblNhiemVuDA">
+              <MappingFragment StoreEntitySet="tblNhiemVuDA">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="NhiemVu" ColumnName="NhiemVu" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+                <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+                <ScalarProperty Name="MaNhiemVuDA" ColumnName="MaNhiemVuDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNhiemVuDaoTaos">
+            <EntityTypeMapping TypeName="TTSModel.tblNhiemVuDaoTao">
+              <MappingFragment StoreEntitySet="tblNhiemVuDaoTao">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+                <ScalarProperty Name="MaKhoaDaoTao" ColumnName="MaKhoaDaoTao" />
+                <ScalarProperty Name="MaNhiemVuDaoTao" ColumnName="MaNhiemVuDaoTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNoiDungDaoTaos">
+            <EntityTypeMapping TypeName="TTSModel.tblNoiDungDaoTao">
+              <MappingFragment StoreEntitySet="tblNoiDungDaoTao">
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="MaKhoaDaoTao" ColumnName="MaKhoaDaoTao" />
+                <ScalarProperty Name="MaNoiDungDaoTao" ColumnName="MaNoiDungDaoTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPhongBans">
+            <EntityTypeMapping TypeName="TTSModel.tblPhongBan">
+              <MappingFragment StoreEntitySet="tblPhongBan">
+                <ScalarProperty Name="TenPhongBan" ColumnName="TenPhongBan" />
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQLs">
+            <EntityTypeMapping TypeName="TTSModel.tblQL">
+              <MappingFragment StoreEntitySet="tblQL">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenQL" ColumnName="TenQL" />
+                <ScalarProperty Name="MaQL" ColumnName="MaQL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTrucThuocs">
+            <EntityTypeMapping TypeName="TTSModel.tblTrucThuoc">
+              <MappingFragment StoreEntitySet="tblTrucThuoc">
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+                <ScalarProperty Name="MaTrucThuoc" ColumnName="MaTrucThuoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTTS">
+            <EntityTypeMapping TypeName="TTSModel.tblTT">
+              <MappingFragment StoreEntitySet="tblTTS">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenTTS" ColumnName="TenTTS" />
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYeuCaus">
+            <EntityTypeMapping TypeName="TTSModel.tblYeuCau">
+              <MappingFragment StoreEntitySet="tblYeuCau">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NgayHieuLuc" ColumnName="NgayHieuLuc" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="MaTTS" ColumnName="MaTTS" />
+                <ScalarProperty Name="NgayNop" ColumnName="NgayNop" />
+                <ScalarProperty Name="MaYeuCau" ColumnName="MaYeuCau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

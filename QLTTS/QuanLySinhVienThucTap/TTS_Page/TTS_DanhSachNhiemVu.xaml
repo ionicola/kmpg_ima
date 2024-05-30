@@ -1,0 +1,163 @@
+﻿<Page x:Class="QuanLySinhVienThucTap.TTS_Page.TTS_DanhSachNhiemVu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLySinhVienThucTap.TTS_Page"
+      mc:Ignorable="d" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="736" d:DesignWidth="1280"
+      Name="TTS_DSNV"
+      Loaded="TTS_DanhSachNhiemVu_Loaded"
+      Title="TTS_DanhSachNhiemVu">
+    <Page.DataContext>
+        TTS_DanhSachNhiemVuVM
+    </Page.DataContext>
+    <Grid Background="LightGray" Width="auto" Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Danh sách nhiệm vụ dự án"  
+               FontSize="28" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Border Height="1" Background="Black" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MaxWidth="260"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <materialDesign:Card>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <ListBox x:Name="listbox" ItemsSource="{Binding ListDuAn}" SelectedItem="{Binding SelectedDuAn}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="ListDuAnItem" Tag="{Binding MaDA}" Text="{Binding TenDA}" FontWeight="Medium" FontSize="16" Foreground="Black">
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseUp">
+                                    <i:InvokeCommandAction Command="{Binding LoadDuAnCommand}" CommandParameter="{Binding ElementName=listbox}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                    </ScrollViewer>
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Text="{Binding TenDuAn}" FontWeight="ExtraBold" Margin="20 0 0 0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <materialDesign:Card VerticalAlignment="Stretch">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ListView SelectionMode="Extended" ItemsSource="{Binding ListNhiemVu}" SelectedItem="{Binding SelectedNhiemVu, Mode=TwoWay}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn Width="auto" Header="STT">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="20,0,0,0" Text="{Binding STT}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Mã Nhiệm vụ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="30,0,0,0" Text="{Binding MaNhiemVuDA}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Tên Thực tập sinh">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="20,0,0,0" Text="{Binding TenTTS}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Nội dung nhiệm vụ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="20,0,0,0" Text="{Binding NhiemVu}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Ngày bắt đầu">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!-- Định dạng Ngày bắt đầu nếu cần -->
+                                                        <TextBlock Margin="0,0,0,0" Text="{Binding NgayBatDau}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="auto" Header="Deadline">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <!-- Định dạng Deadline nếu cần -->
+                                                        <TextBlock Margin="0,0,0,0" Text="{Binding Deadline}" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="auto" Header="Tiến độ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Margin="15,0,0,0" Text="{Binding Status}">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Status}" Value="done">
+                                                                            <Setter Property="Foreground" Value="DarkGreen"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Status}" Value="in-progress">
+                                                                            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Status}" Value="expired">
+                                                                            <Setter Property="Foreground" Value="DarkRed"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Xem chi tiết" Command="{Binding XemChiTietCommand}" Background="DarkBlue" Width="250" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                        <Button Content="Hoàn thành nhiệm vụ" Command="{Binding CompleteNhiemVuCommand}" Background="DarkGreen" Width="250" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

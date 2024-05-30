@@ -1,0 +1,111 @@
+﻿<Page x:Class="QuanLySinhVienThucTap.TTS_Page.TTS_DanhSachKhoaHoc"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+   xmlns:local="clr-namespace:QuanLySinhVienThucTap.TTS_Page"
+   mc:Ignorable="d" 
+   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+   TextElement.FontWeight="Regular"
+   TextElement.FontSize="13"
+   TextOptions.TextFormattingMode="Ideal"
+   TextOptions.TextRenderingMode="Auto"
+   Background="{DynamicResource MaterialDesignPaper}"
+   FontFamily="{DynamicResource MaterialDesignFont}"
+   d:DesignHeight="736" d:DesignWidth="1280"
+   Name="TTS_DSKH"
+   Title="TTS_DanhSachKhoaHoc">
+    <Page.DataContext>
+        TTS_DanhSachKhoaHocVM
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadKhoaHocCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="LightGray" Width="auto" Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Danh sách khóa học"
+            FontSize="28" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Border Height="1" Background="Black" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <materialDesign:Card VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <ListView SelectionMode="Extended" ItemsSource="{Binding ListKhoaHoc, Mode=TwoWay}" SelectedItem="{Binding SelectedKhoaHoc, Mode=TwoWay}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn Width="auto" Header="STT">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="20,0,0,0" Text="{Binding STT}" TextAlignment="Right" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Width="auto" Header="Mã Nhiệm vụ">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="40,0,0,0" Text="{Binding MaNhiemVuDaoTao}" TextAlignment="Right" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Width="auto" Header="Mã Khóa đào tạo">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="45,0,5,0" Text="{Binding MaKhoaDaoTao}" TextAlignment="Right" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Width="auto" Header="Tên Khóa đào tạo">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="15,0,0,0" Text="{Binding TenKhoa}" TextAlignment="Right" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Width="auto" Header="Deadline">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="0,0,0,0" Text="{Binding Deadline}" TextAlignment="Right" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="auto" Header="Tiến độ">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Margin="15,0,0,0" Text="{Binding Status}" Foreground="DarkGoldenrod"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Chi tiết khóa học" Command="{Binding DetailsCommand}" Background="DarkBlue" Width="250" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                    <Button Content="Hoàn thành khóa học" Command="{Binding CompleteCommand}" Background="DarkGreen" Width="250" Height="40" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,99 @@
+﻿<Window x:Class="QuanLySinhVienThucTap.TTS_Page.TTS_DanhSachNhiemVuPage.ChiTietNhiemVu"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:QuanLySinhVienThucTap.TTS_Page.TTS_DanhSachNhiemVuPage"
+        mc:Ignorable="d"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+         DataContext="{StaticResource TTS_ChiTietNhiemVuVM}"
+        Name="TTS_ChiTietNhiemVu"
+        Title="Chi Tiết Nhiệm Vụ" Height="600" Width="1000">
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Loaded">
+			<i:InvokeCommandAction Command="{Binding LoadWindowCommand}" CommandParameter="{Binding ElementName=TTS_ChiTietNhiemVu}"/>
+		</i:EventTrigger>
+	</i:Interaction.Triggers>
+	<Grid Background="LightGray">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<TextBlock Text="Xem Chi tiết Nhiệm vụ" Foreground="DarkBlue" FontSize="22" FontWeight="Bold" Margin="10"></TextBlock>
+		</Grid>
+		<Grid Grid.Row="1" Margin="80 0 80 0">
+			<Grid Grid.Column="1">
+				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+					<materialDesign:Card Margin="10" VerticalAlignment="Stretch">
+						<StackPanel Margin="10">
+							<TextBlock Text="{Binding TenDA}" FontSize="16" FontWeight="Bold" Margin="0 10 0 10"></TextBlock>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Mã Nhiệm vụ"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding MaNhiemVuDA, UpdateSourceTrigger=PropertyChanged}"
+            IsReadOnly="True"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Nội dung Nhiệm vụ"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding TenNhiemVuDA, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Ngày Bắt đầu"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NgayBatDau, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Deadline"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Status"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Status, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Nhận xét"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NhanXet, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"></TextBox>
+							<TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Điểm số"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Diem, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"></TextBox>
+						</StackPanel>
+					</materialDesign:Card>
+				</ScrollViewer>
+			</Grid>
+		</Grid>
+		<materialDesign:Card Grid.Row="2" Margin="5" HorizontalAlignment="Right" Background="LightGray">
+			<WrapPanel>
+				<Button Content="Thoát" Background="DarkRed" Command="{Binding ExitCommand}" Margin="5" Width="150"></Button>
+			</WrapPanel>
+		</materialDesign:Card>
+	</Grid>
+</Window>

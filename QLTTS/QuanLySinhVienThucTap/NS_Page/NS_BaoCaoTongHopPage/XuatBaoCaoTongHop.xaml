@@ -1,0 +1,16 @@
+﻿<Window x:Class="QuanLySinhVienThucTap.NS_Page.NS_BaoCaoTongHopPage.XuatBaoCaoTongHop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLySinhVienThucTap.NS_Page.NS_BaoCaoTongHopPage" xmlns:cr="clr-namespace:CrystalDecisions.Windows.Forms;assembly=CrystalDecisions.Windows.Forms"
+        mc:Ignorable="d"
+        Title="XuatBaoCaoTongHop" Height="650" Width="1150">
+    <Grid>
+        <WindowsFormsHost Name="windowsFormsHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <WindowsFormsHost.Child>
+                <cr:CrystalReportViewer x:Name="crystalReportViewer" />
+            </WindowsFormsHost.Child>
+        </WindowsFormsHost>
+    </Grid>
+</Window>

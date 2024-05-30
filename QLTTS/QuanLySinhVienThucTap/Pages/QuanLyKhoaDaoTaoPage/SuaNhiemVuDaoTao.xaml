@@ -1,0 +1,102 @@
+﻿<Window x:Class="QuanLySinhVienThucTap.Pages.QuanLyKhoaDaoTaoPage.SuaNhiemVuDaoTao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLySinhVienThucTap.Pages.QuanLyKhoaDaoTaoPage"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             DataContext="{StaticResource SuaNhiemVuDaoTaoVM}"
+            Name="SuaNhiemVuDT"
+            Title="Sửa nhiệm vụ đào tạo" Height="450" Width="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" CommandParameter="{Binding ElementName=SuaNhiemVuDT}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Sửa nhiệm vụ đào tạo" Foreground="DarkBlue" FontSize="22" FontWeight="Bold" Margin="10"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Margin="80 0 80 0">
+            <Grid Grid.Column="1">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <materialDesign:Card Margin="10" VerticalAlignment="Stretch">
+                        <StackPanel Margin="10">
+                            <TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Mã Thực tập sinh"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding MaTTS, UpdateSourceTrigger=PropertyChanged}"
+            IsReadOnly="True">
+                            </TextBox>
+                            <TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Tên Thực tập sinh"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding TenTTS, UpdateSourceTrigger=PropertyChanged}"
+            IsReadOnly="True">
+                            </TextBox>
+                            <TextBox
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Khóa Đào tạo"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding KhoaDaoTao, UpdateSourceTrigger=PropertyChanged}"
+            IsReadOnly="True">
+                            </TextBox>
+                            <DatePicker
+            Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Ngày bắt đầu"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+            SelectedDate="{Binding NgayBatDau, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            </DatePicker>
+                            <materialDesign:TimePicker
+                         Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Ngày bắt đầu"
+            Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+            SelectedTime="{Binding NgayBatDau, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            </materialDesign:TimePicker>
+                            <DatePicker
+                         Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Deadline"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+             SelectedDate="{Binding Deadline, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            </DatePicker>
+                            <materialDesign:TimePicker
+                         Margin="0 10 0 10"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Deadline"
+            Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+            SelectedTime="{Binding Deadline, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            </materialDesign:TimePicker>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <materialDesign:Card Grid.Row="2" Margin="5" HorizontalAlignment="Right" Background="LightGray">
+            <WrapPanel>
+                <Button Content="Cập nhật" Command="{Binding CapNhatCommand}" Margin="5" Width="150"></Button>
+            </WrapPanel>
+        </materialDesign:Card>
+    </Grid>
+</Window>
